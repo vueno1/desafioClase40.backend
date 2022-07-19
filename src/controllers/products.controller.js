@@ -1,10 +1,10 @@
 const { getProducts, createProducts } = require("../services/product.service");
 
 async function getProductsController(req, res) {
-  const products = await getProducts();
-  res.render("index", {
-    products: products
-  })
+  const p = req.query
+  const categoria = p.categoria
+  const products = await getProducts(categoria);
+  res.send(products)
 }
 
 async function postProductsController(req, res) {

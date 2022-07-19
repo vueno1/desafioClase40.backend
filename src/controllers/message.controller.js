@@ -1,10 +1,11 @@
 const { getMessage, createMessage } = require("../services/message.service");
 
 async function getMessageController(req, res) {
-  const message = await getMessage();
-  res.render("index", {
-    products: message
-  })
+  const m = req.query
+  const categoria = m.categoria
+  const message = await getMessage(categoria);
+  res.send(message)
+
 }
 
 async function postMessageController(req, res) {
