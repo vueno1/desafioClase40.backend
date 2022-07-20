@@ -4,7 +4,7 @@ const Container = require("./classFather")
 class ClassProducto extends Container {
     constructor() {
         super(Producto)
-    }
+    }   
 }
 
 module.exports = ClassProducto
