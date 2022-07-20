@@ -2,8 +2,7 @@ const Factory = require("../daos/factory.dao")
 
 async function getProducts(p) {
   try{
-    const categoria = p
-    const mostrar = await Factory.create(categoria)
+    const mostrar = await Factory.create(p)
     const mostrarDB = await mostrar.mostrar()
     return  mostrarDB
   }catch(e) {
