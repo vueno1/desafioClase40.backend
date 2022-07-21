@@ -1,10 +1,9 @@
-const Factory = require("../daos/factory.dao")
+const messageDTO = require("../repositories/message.repository")
+const mensaje = new messageDTO()
 
 async function getMessage(m) {
   try{
-    const mostrar = await Factory.create(m)
-    const mostrarDB = await mostrar.mostrar()
-    return  mostrarDB
+    return await mensaje.getDTO(m)
   }catch(e) {
     console.log(e.message);
   }
@@ -12,10 +11,7 @@ async function getMessage(m) {
 
 async function createMessage(m) {
   try{
-    const categoria = m.type
-    const guardado = await Factory.create(categoria)
-    await guardado.guardar(m)
-    return guardado
+    return await mensaje.createDTO(m)
   }catch(e){
     console.log(e.message);
   }

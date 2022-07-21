@@ -1,10 +1,11 @@
-const Factory = require("../daos/factory.dao")
+const productoDTO = require("../repositories/product.repository")
+const producto = new productoDTO()
 
 async function getProducts(p) {
   try{
-    const mostrar = await Factory.create(p)
-    const mostrarDB = await mostrar.mostrar()
-    return  mostrarDB
+    console.log(p)
+    return await producto.getDTO(p)
+  
   }catch(e) {
     console.log(e.message);
   }
@@ -12,10 +13,8 @@ async function getProducts(p) {
 
 async function createProducts(p) {
   try{
-    const categoria = p.type
-    const guardado = await Factory.create(categoria)
-    await guardado.guardar(p)
-    return guardado
+    return await producto.createDTO(p)
+ 
   }catch(e){
     console.log(e.message);
   }
